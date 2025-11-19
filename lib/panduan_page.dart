@@ -1,128 +1,133 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-// Model data panduan
 class ItemData {
   final String title;
   final String subtitle;
-  final IconData icon;
-  final Color iconBgColor;
-  final Color iconColor;
+  final IconData icon; // tetap IconData (FontAwesome juga IconData)
 
   ItemData({
     required this.title,
     required this.subtitle,
     required this.icon,
-    required this.iconBgColor,
-    required this.iconColor,
   });
 }
 
 class PanduanPage extends StatelessWidget {
-  // Data untuk bagian "Umum" (Panduan Penggunaan)
   final List<ItemData> umumItems = [
     ItemData(
       title: 'Unggah Profile',
       subtitle: 'Panduan untuk mengunggah profile pengguna',
-      icon: Icons.calendar_today,
-      iconBgColor: Color(0xFFD7E4FD),
-      iconColor: Color(0xFF3168F6),
+      icon: FontAwesomeIcons.user,
     ),
     ItemData(
       title: 'Ganti Password',
       subtitle: 'Panduan untuk mengganti password pengguna',
-      icon: Icons.calendar_today,
-      iconBgColor: Color(0xFFD7E4FD),
-      iconColor: Color(0xFF3168F6),
+      icon: FontAwesomeIcons.lock,
     ),
   ];
 
-  // Data untuk bagian "Untuk Siswa"
   final List<ItemData> untukSiswaItems = [
     ItemData(
       title: 'Mengisi Jurnal',
-      subtitle: 'Panduan untuk mengisi kegiatan sehari-hari',
-      icon: Icons.calendar_today,
-      iconBgColor: Color(0xFFD7E4FD),
-      iconColor: Color(0xFF3168F6),
+      subtitle: 'Panduan untuk mengisi kegiatan sehari - hari',
+      icon: FontAwesomeIcons.penToSquare,
     ),
     ItemData(
       title: 'Kelengkapan Profile',
       subtitle: 'Panduan untuk melengkapi profile',
-      icon: Icons.calendar_today,
-      iconBgColor: Color(0xFFD7E4FD),
-      iconColor: Color(0xFF3168F6),
+      icon: FontAwesomeIcons.idCard,
     ),
     ItemData(
       title: 'Mengelola Portfolio',
       subtitle: 'Panduan untuk menambah, edit, dan hapus portfolio',
-      icon: Icons.photo,
-      iconBgColor: Color(0xFFD7E4FD),
-      iconColor: Color(0xFF3168F6),
+      icon: FontAwesomeIcons.images,
     ),
     ItemData(
       title: 'Mengelola Sertifikat',
       subtitle: 'Panduan untuk menambah, edit, dan hapus sertifikat',
-      icon: Icons.verified,
-      iconBgColor: Color(0xFFD7E4FD),
-      iconColor: Color(0xFF3168F6),
+      icon: FontAwesomeIcons.award,
     ),
     ItemData(
       title: 'Catatan Sikap Saya',
       subtitle: 'Panduan untuk melihat dan memahami catatan sikap',
-      icon: Icons.info,
-      iconBgColor: Color(0xFFD7E4FD),
-      iconColor: Color(0xFF3168F6),
+      icon: FontAwesomeIcons.circleInfo,
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF4F6F9),
+
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 1,
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
+        titleSpacing: 0,
         title: Row(
           children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Muhammad Mumtaz Supian',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                  Text(
-                    'PPLG XII-5',
-                    style: TextStyle(color: Colors.grey[600], fontSize: 12),
-                  ),
-                ],
+            Padding(
+              padding: const EdgeInsets.only(left: 4),
+              child: FaIcon(
+                FontAwesomeIcons.house,
+                color: Colors.black87,
+                size: 20,
               ),
             ),
+
+            Spacer(),
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Go Min-Si",
+                  style: GoogleFonts.poppins(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14.5,
+                  ),
+                ),
+                Text(
+                  "Fineshyt",
+                  style: GoogleFonts.poppins(
+                    color: Colors.grey[600],
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(width: 10),
+
             CircleAvatar(
               radius: 20,
-              backgroundImage: AssetImage('assets/images/profile_photo.jpg'),
+              backgroundImage: AssetImage("assets/images/minsi.jpg"),
             ),
+            SizedBox(width: 6),
           ],
         ),
       ),
-      backgroundColor: Colors.white,
+
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Bagian Panduan Penggunaan terlebih dahulu
             Row(
               children: [
-                Icon(Icons.menu_book, color: Color(0xFF1B3B8B), size: 26),
+                FaIcon(
+                  FontAwesomeIcons.bookOpen,
+                  color: Color(0xFF1B3B8B),
+                  size: 26,
+                ),
                 SizedBox(width: 6),
                 Text(
-                  'Panduan Penggunaan',
-                  style: TextStyle(
+                  "Panduan Penggunaan",
+                  style: GoogleFonts.poppins(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                     color: Color(0xFF1B3B8B),
@@ -130,49 +135,57 @@ class PanduanPage extends StatelessWidget {
                 ),
               ],
             ),
+
             SizedBox(height: 12),
             Text(
-              'Selamat datang di panduan penggunaan aplikasi Jurnalku. Panduan ini akan membantu Anda memahami cara menggunakan fitur-fitur yang tersedia dengan optimal.',
-              style: TextStyle(
+              "Selamat datang di panduan penggunaan aplikasi Jurnalku. Panduan ini akan membantu Anda memahami cara menggunakan fitur-fitur yang tersedia dengan optimal.",
+              style: GoogleFonts.poppins(
                 fontSize: 14,
-                height: 1.5,
+                height: 1.55,
                 color: Colors.grey[800],
               ),
             ),
-            SizedBox(height: 20),
+
+            SizedBox(height: 24),
+
             Text(
-              'Umum',
-              style: TextStyle(
-                fontSize: 16,
+              "Umum",
+              style: GoogleFonts.poppins(
+                fontSize: 17,
                 fontWeight: FontWeight.w700,
                 color: Colors.black87,
               ),
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 14),
+
             Column(
-              children: umumItems.map((item) => Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: GuideItemWidget(item: item),
-              )).toList(),
+              children: umumItems
+                  .map((e) => Padding(
+                        padding: const EdgeInsets.only(bottom: 14),
+                        child: GuideItem(item: e),
+                      ))
+                  .toList(),
             ),
 
-            SizedBox(height: 32),
+            SizedBox(height: 28),
 
-            // Bagian Untuk Siswa setelahnya
             Text(
-              'Untuk Siswa',
-              style: TextStyle(
+              "Untuk Siswa",
+              style: GoogleFonts.poppins(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Colors.black87,
               ),
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 14),
+
             Column(
-              children: untukSiswaItems.map((item) => Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: GuideItemWidget(item: item),
-              )).toList(),
+              children: untukSiswaItems
+                  .map((e) => Padding(
+                        padding: const EdgeInsets.only(bottom: 14),
+                        child: GuideItem(item: e),
+                      ))
+                  .toList(),
             ),
           ],
         ),
@@ -181,37 +194,58 @@ class PanduanPage extends StatelessWidget {
   }
 }
 
-class GuideItemWidget extends StatelessWidget {
+// ===================================================
+// ITEM CARD YANG SUDAH PAKAI FONT AWESOME
+// ===================================================
+class GuideItem extends StatelessWidget {
   final ItemData item;
-
-  GuideItemWidget({required this.item});
+  GuideItem({required this.item});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Color(0xFFF9FAFB),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
-      padding: EdgeInsets.all(12),
       child: Row(
         children: [
           Container(
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: item.iconBgColor,
-              borderRadius: BorderRadius.circular(8),
+              color: const Color(0xFFE8F0FE),
+              borderRadius: BorderRadius.circular(10),
             ),
-            padding: EdgeInsets.all(8),
-            child: Icon(item.icon, color: item.iconColor, size: 28),
+            child: FaIcon(
+              item.icon,
+              color: const Color(0xFF3168F6),
+              size: 24,
+            ),
           ),
+
           SizedBox(width: 14),
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(item.title, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
-                SizedBox(height: 2),
-                Text(item.subtitle, style: TextStyle(color: Colors.grey[600], fontSize: 14)),
+                Text(
+                  item.title,
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15.5,
+                  ),
+                ),
+                SizedBox(height: 3),
+                Text(
+                  item.subtitle,
+                  style: GoogleFonts.poppins(
+                    color: Colors.grey[600],
+                    fontSize: 13.5,
+                    height: 1.3,
+                  ),
+                ),
               ],
             ),
           ),
