@@ -11,6 +11,17 @@ class ProfilePage extends StatelessWidget {
       backgroundColor: bg,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        titleSpacing: 0,
+        leading: IconButton(
+          padding: const EdgeInsets.only(left: -10),
+          icon: const Icon(Icons.book, color: Color(0xFF02398C)),
+          onPressed: () {
+            // Navigator.push(
+            //   // context,
+            //   // MaterialPageRoute(builder: (context) => HomePage()),
+            // );
+          },
+        ),
         title: Text(
           "Jurnalku",
           style: TextStyle(
@@ -23,6 +34,12 @@ class ProfilePage extends StatelessWidget {
         actions: [
           SizedBox(width: 10),
           TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: Color(0xFF02398C),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
             onPressed: () {
               Navigator.push(
                 context,
