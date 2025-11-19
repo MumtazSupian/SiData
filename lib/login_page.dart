@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'profile.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Color bg = const Color(0xFFF4F6F9); 
+    final Color bg = const Color(0xFFF4F6F9);
 
     return Scaffold(
       backgroundColor: bg,
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ProfilePage()),
+          );
+        },
+
         label: Text(
           "Jelajahi Siswa",
           style: GoogleFonts.poppins(
@@ -55,7 +62,7 @@ class LoginPage extends StatelessWidget {
                         TextSpan(
                           text: "Jurnalku",
                           style: TextStyle(
-                            color:  Color.fromARGB(255, 22, 25, 130),
+                            color: Color.fromARGB(255, 22, 25, 130),
                           ),
                         ),
                       ],
@@ -224,7 +231,7 @@ class LoginPage extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 30),
-              color:const Color.fromARGB(255, 22, 25, 130),
+              color: const Color.fromARGB(255, 22, 25, 130),
               child: Column(
                 children: [
                   Row(
