@@ -21,14 +21,14 @@ class _PermintaanSaksiPageState extends State<PermintaanSaksiPage> {
         surfaceTintColor: Colors.transparent,
         titleSpacing: 0,
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1),
+          preferredSize: const Size.fromHeight(1),
           child: Container(height: 1, color: Colors.grey),
         ),
 
         title: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 4),
+            const Padding(
+              padding: EdgeInsets.only(left: 4),
               child: FaIcon(
                 FontAwesomeIcons.house,
                 color: Colors.black87,
@@ -36,7 +36,7 @@ class _PermintaanSaksiPageState extends State<PermintaanSaksiPage> {
               ),
             ),
 
-            Spacer(),
+            const Spacer(),
 
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -60,19 +60,19 @@ class _PermintaanSaksiPageState extends State<PermintaanSaksiPage> {
               ],
             ),
 
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
 
-            CircleAvatar(
+            const CircleAvatar(
               radius: 20,
               backgroundImage: AssetImage("assets/images/minsi.jpg"),
             ),
-            SizedBox(width: 6),
+            const SizedBox(width: 6),
           ],
         ),
       ),
 
       body: Padding(
-        padding: EdgeInsetsGeometry.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -84,42 +84,39 @@ class _PermintaanSaksiPageState extends State<PermintaanSaksiPage> {
                 color: Colors.black87,
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
 
-            Row(
-              children: [
-                Text(
-                  "Kelola permintaan menjadi saksi dari siswa lain",
-                  overflow: TextOverflow.fade,
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black87,
-                  ),
-                ),
-                Spacer(),
-
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFEFF5FF), 
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    "Thursday, 20 November 2025",
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      color: Color(0xFF1A73E8), // biru teks seperti gambar
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ],
+            Text(
+              "Kelola permintaan menjadi saksi dari siswa lain",
+              overflow: TextOverflow.fade,
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.black87,
+              ),
             ),
-            SizedBox(height: 20),
+
+            const SizedBox(height: 15),
 
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: const Color(0xFFEFF5FF),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                "Thursday, 20 November 2025",
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: const Color(0xFF1A73E8),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            Container(
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
@@ -127,11 +124,10 @@ class _PermintaanSaksiPageState extends State<PermintaanSaksiPage> {
               ),
               child: Column(
                 children: [
-                  // HEADER TABLE
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 14),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF8F9FB),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFF8F9FB),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(16),
                         topRight: Radius.circular(16),
@@ -171,7 +167,7 @@ class _PermintaanSaksiPageState extends State<PermintaanSaksiPage> {
                   Container(height: 1, color: Colors.grey.withOpacity(0.25)),
 
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 50),
+                    padding: const EdgeInsets.symmetric(vertical: 50),
                     child: Column(
                       children: [
                         Icon(
@@ -179,7 +175,7 @@ class _PermintaanSaksiPageState extends State<PermintaanSaksiPage> {
                           size: 48,
                           color: Colors.grey[400],
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Text(
                           "Belum ada permintaan",
                           style: GoogleFonts.poppins(
@@ -190,7 +186,9 @@ class _PermintaanSaksiPageState extends State<PermintaanSaksiPage> {
                         ),
                         Text(
                           "Belum ada yang mengirim permintaan saksi kepada Anda",
-                          style: GoogleFonts.poppins(color: Colors.grey[600]),
+                          style: GoogleFonts.poppins(
+                            color: Colors.grey[600],
+                          ),
                         ),
                       ],
                     ),
