@@ -10,8 +10,19 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      elevation: 0,
+      elevation: 3,
       backgroundColor: const Color(0xFFF4F6F9),
+
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(4),
+        child: Divider(
+          height: 1,
+          thickness: 1,
+          color: Colors.grey.withOpacity(0.3),
+        ),
+      ),
+
+
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sidata_app/login_page.dart';
+import 'package:sidata_app/profile.dart';
+import 'student_behavior.dart';
 
 
 void main() {
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Jurnalku',
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: StudentBehavior(),
     );
   }
 }

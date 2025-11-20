@@ -89,7 +89,7 @@ class ProfilePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
                         Text(
-                          "Abdurrahman",
+                          "Fauzan Ihsan Putra",
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -99,11 +99,11 @@ class ProfilePage extends StatelessWidget {
                         Wrap(
                           spacing: 10,
                           children: [
-                            Text("12309482", style: TextStyle(color: Colors.grey)),
+                            Text("12309647", style: TextStyle(color: Colors.grey)),
                             Text("|"),
-                            Text("PPLG XII-2", style: TextStyle(color: Colors.grey)),
+                            Text("PPLG XII-5", style: TextStyle(color: Colors.grey)),
                             Text("|"),
-                            Text("Cib 4", style: TextStyle(color: Colors.grey)),
+                            Text("Cic 10", style: TextStyle(color: Colors.grey)),
                           ],
                         ),
                       ],
