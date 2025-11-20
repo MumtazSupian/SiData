@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class ItemData {
   final String title;
   final String subtitle;
-  final IconData icon; // tetap IconData (FontAwesome juga IconData)
+  final IconData icon; 
 
   ItemData({
     required this.title,
