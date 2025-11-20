@@ -4,54 +4,61 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
   const AppbarProp({super.key});
 
   @override
-  Size get preferredSize => const Size.fromHeight(56);
+  Size get preferredSize => const Size.fromHeight(60);
 
   @override
   Widget build(BuildContext context) {
-    final Color bg = const Color(0xFFF4F6F9);
-
     return AppBar(
       automaticallyImplyLeading: false,
-      titleSpacing: 0,
-      backgroundColor: bg,
       elevation: 0,
-
-      leading: IconButton(
-        padding: const EdgeInsets.only(left: -10),
-        icon: const Icon(Icons.book, color: Color(0xFF02398C)),
-        onPressed: () {
-          // contoh navigasi
-          // Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
-        },
-      ),
-
-      title: const Text(
-        "Jurnalku",
-        style: TextStyle(
-          color: Color(0xFF64748B),
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-
-      actions: [
-        const SizedBox(width: 10),
-        TextButton(
-          style: TextButton.styleFrom(
-            backgroundColor: const Color(0xFF02398C),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            minimumSize: const Size(80, 40),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
+      backgroundColor: const Color(0xFFF4F6F9),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // LEFT ICON
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.home_outlined),
+            color: const Color(0xFF64748B),
+            iconSize: 28,
           ),
-          onPressed: () {},
-          child: const Text(
-            "Login",
-            style: TextStyle(color: Colors.white),
+
+          const Spacer(),
+
+          // Name and Avatar
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: const [
+              Text(
+                "Fauzan Ihsan Putra",
+                style: TextStyle(
+                  color: Color(0xFF1E293B),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              SizedBox(height: 2),
+              Text(
+                "PPLG XII-5",
+                style: TextStyle(
+                  color: Color(0xFF64748B),
+                  fontSize: 13,
+                ),
+              ),
+            ],
           ),
-        ),
-        const SizedBox(width: 30),
-      ],
+          const SizedBox(width: 16,),
+
+          // RIGHT AVATAR
+          const CircleAvatar(
+            radius: 20,
+            backgroundImage: AssetImage("assets/images/anuan.jpeg"),
+          ),
+        ],
+      ),
+      centerTitle: true,
     );
   }
 }
