@@ -33,7 +33,7 @@ class StudentBehavior extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 40),
+            SizedBox(height: 20),
 
             Card(
               elevation: 0,
