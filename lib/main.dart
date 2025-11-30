@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:sidata_app/login_page.dart';
-// import 'package:sidata_app/panduan_page.dart';
-import 'package:sidata_app/permintaan_saksi_page.dart';
+import 'package:sidata_app/login_page.dart';
 
 
 void main() {
@@ -16,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Jurnalku',
       debugShowCheckedModeBanner: false,
-      home: PermintaanSaksiPage(),
+      home: LoginPage(),
     );
   }
 }
