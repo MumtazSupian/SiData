@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sidata_app/widgets/appbar.dart';
 
 class PermintaanSaksiPage extends StatefulWidget {
   const PermintaanSaksiPage({super.key});
@@ -15,61 +16,7 @@ class _PermintaanSaksiPageState extends State<PermintaanSaksiPage> {
     return Scaffold(
       backgroundColor: Colors.white,
 
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
-        titleSpacing: 0,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Container(height: 1, color: Colors.grey),
-        ),
-
-        title: Row(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 4),
-              child: FaIcon(
-                FontAwesomeIcons.house,
-                color: Colors.black87,
-                size: 20,
-              ),
-            ),
-
-            const Spacer(),
-
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Go Min-Si",
-                  style: GoogleFonts.poppins(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14.5,
-                  ),
-                ),
-                Text(
-                  "Fineshyt",
-                  style: GoogleFonts.poppins(
-                    color: Colors.grey[600],
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
-
-            const SizedBox(width: 10),
-
-            const CircleAvatar(
-              radius: 20,
-              backgroundImage: AssetImage("assets/images/minsi.jpg"),
-            ),
-            const SizedBox(width: 6),
-          ],
-        ),
-      ),
+      appBar: const AppbarProp(),
 
       body: Padding(
         padding: const EdgeInsets.all(20),
