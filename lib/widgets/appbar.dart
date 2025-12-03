@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sidata_app/Progress.dart';
 import 'package:sidata_app/dashboard.dart';
 import 'package:sidata_app/login_page.dart';
 import 'package:sidata_app/panduan_page.dart';
@@ -87,16 +88,6 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
                   ),
             itemBuilder: (context) => [
               PopupMenuItem(
-                      value: 1, 
-                      child: Row(
-                        children: [
-                          Icon(Icons.person, size: 20),
-                          SizedBox(width: 10),
-                          Text("Profile"),
-                        ],
-                      ),
-                    ),
-              PopupMenuItem(
                       value: 2, 
                       child: Row(
                         children: [
@@ -107,12 +98,32 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     ),
               PopupMenuItem(
+                      value: 1, 
+                      child: Row(
+                        children: [
+                          Icon(Icons.person, size: 20),
+                          SizedBox(width: 10),
+                          Text("Profile"),
+                        ],
+                      ),
+                    ),
+              PopupMenuItem(
                       value: 3, 
                       child: Row(
                         children: [
-                          Icon(Icons.sticky_note_2, size: 20),
+                          Icon(Icons.timer, size: 20),
                           SizedBox(width: 10),
-                          Text("Catatan Sikap"),
+                          Text("Jelajahi"),
+                        ],
+                      ),
+                    ),
+              PopupMenuItem(
+                      value: 3, 
+                      child: Row(
+                        children: [
+                          Icon(Icons.book_online, size: 20),
+                          SizedBox(width: 10),
+                          Text("Jurnal Pembiasaan"),
                         ],
                       ),
                     ),
@@ -127,6 +138,26 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     ),
               PopupMenuItem(
+                      value: 6, 
+                      child: Row(
+                        children: [
+                          Icon(Icons.task, size: 20),
+                          SizedBox(width: 10),
+                          Text("Progress"),
+                        ],
+                      ),
+              ),
+              PopupMenuItem(
+                      value: 3, 
+                      child: Row(
+                        children: [
+                          Icon(Icons.sticky_note_2, size: 20),
+                          SizedBox(width: 10),
+                          Text("Catatan Sikap"),
+                        ],
+                      ),
+                    ),
+              PopupMenuItem(
                       value: 5, 
                       child: Row(
                         children: [
@@ -137,7 +168,7 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     ),
               PopupMenuItem(
-                      value: 6, 
+                      value: 7, 
                       child: Row(
                         children: [
                           Icon(Icons.settings, size: 20),
@@ -147,7 +178,7 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     ),
               PopupMenuItem(
-                      value: 7, 
+                      value: 8, 
                       child: Row(
                         children: [
                           Icon(Icons.logout, size: 20),
@@ -168,10 +199,12 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const PermintaanSaksiPage()));
               } else if (value == 5) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => PanduanPage()));
-              } else if (value == 6) {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
               } else if (value == 7) {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
+              } else if (value == 8) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
+              } else if(value == 6) {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ProgressPage()));
               }
             },
           ),
