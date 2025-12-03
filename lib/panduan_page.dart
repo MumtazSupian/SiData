@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sidata_app/widgets/appbar.dart';
 
 class ItemData {
   final String title;
@@ -60,57 +61,7 @@ class PanduanPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF4F6F9),
-
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
-        titleSpacing: 0,
-        title: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 4),
-              child: FaIcon(
-                FontAwesomeIcons.house,
-                color: Colors.black87,
-                size: 20,
-              ),
-            ),
-
-            Spacer(),
-
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Go Min-Si",
-                  style: GoogleFonts.poppins(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14.5,
-                  ),
-                ),
-                Text(
-                  "Fineshyt",
-                  style: GoogleFonts.poppins(
-                    color: Colors.grey[600],
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
-
-            SizedBox(width: 10),
-
-            CircleAvatar(
-              radius: 20,
-              backgroundImage: AssetImage("assets/images/minsi.jpg"),
-            ),
-            SizedBox(width: 6),
-          ],
-        ),
-      ),
+      appBar: const AppbarProp(),
 
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),

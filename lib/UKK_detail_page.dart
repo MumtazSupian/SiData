@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sidata_app/widgets/appbar.dart';
 
-class MobileappsDetailPage extends StatelessWidget {
-  const MobileappsDetailPage ({super.key});
+class UKKDetailPage extends StatelessWidget {
+  const UKKDetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class MobileappsDetailPage extends StatelessWidget {
                         'Aplikasi Mobile E-Commerce',
                         'Flutter Development',
                         'Pak Istakim',
-                        '28 Nov 2025',
+                        '26 Nov 2025',
                         'Selesai',
                         Colors.green,
                       ),

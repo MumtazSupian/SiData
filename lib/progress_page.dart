@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'project_work_detail_page.dart';
+import 'package:sidata_app/GIM_detail_page.dart';
+import 'package:sidata_app/UKK_detail_page.dart';
+import 'package:sidata_app/widgets/appbar.dart';
+import 'project_work_detail_page.dart' hide UKKDetailPage;
 import 'mobile_apps_detail_page.dart';
 
 class ProgressPage extends StatelessWidget {
@@ -8,6 +11,7 @@ class ProgressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const AppbarProp(),
       backgroundColor: Colors.grey[50],
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -110,7 +114,7 @@ class ProgressPage extends StatelessWidget {
                       child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                           Text(
+                          Text(
                             'Project Work',
                             style: TextStyle(
                               fontSize: 16,
@@ -118,14 +122,14 @@ class ProgressPage extends StatelessWidget {
                               color: Colors.black87,
                             ),
                           ),
-                           SizedBox(height: 4),
-                           Text(
+                          SizedBox(height: 4),
+                          Text(
                             'Kompetensi dan materi pembelajaran',
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey,
                             ),
-                          ),
+                          ),    
                         ],
                       ),
                     ),
@@ -136,7 +140,7 @@ class ProgressPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const MobileAppsDetailPage(),
+                          builder: (context) => const MobileappsDetailPage(),
                         ),
                       );
                     },
@@ -157,7 +161,7 @@ class ProgressPage extends StatelessWidget {
                       child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                           Text(
+                          Text(
                             'MobileApps',
                             style: TextStyle(
                               fontSize: 16,
@@ -165,8 +169,8 @@ class ProgressPage extends StatelessWidget {
                               color: Colors.black87,
                             ),
                           ),
-                           SizedBox(height: 4),
-                           Text(
+                          SizedBox(height: 4),
+                          Text(
                             'Kompetensi dan materi pembelajaran',
                             style: TextStyle(
                               fontSize: 12,
@@ -178,6 +182,99 @@ class ProgressPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 24),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const UKKDetailPage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.05),
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'UKK (Ujian Kompetensi Keahlian)',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Kompetensi dan materi pembelajaran',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const GimDetailPage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.05),
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'GIM',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Kompetensi dan materi pembelajaran',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   ],
                 ),
               ),

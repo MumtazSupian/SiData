@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sidata_app/widgets/appbar.dart';
 
-class MobileappsDetailPage extends StatelessWidget {
-  const MobileappsDetailPage ({super.key});
+class GimDetailPage extends StatelessWidget {
+  const GimDetailPage ({super.key});
 
   @override
   Widget build(BuildContext context) {
