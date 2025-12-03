@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sidata_app/Progress.dart';
+import 'package:sidata_app/progress_page.dart';
 import 'package:sidata_app/dashboard.dart';
 import 'package:sidata_app/login_page.dart';
 import 'package:sidata_app/panduan_page.dart';
