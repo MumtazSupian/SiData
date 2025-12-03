@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Jurnalku',
       debugShowCheckedModeBanner: false,
-      home: Explore(),
+      home: StudentBehavior(),
     );
   }
 }
