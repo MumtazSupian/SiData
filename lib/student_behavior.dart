@@ -259,6 +259,75 @@ class StudentBehavior extends StatelessWidget {
                 ),
               ),
             ),
+
+            SizedBox(height: 25),
+
+            // Table Section
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Color(0xFFE0E0E0)),
+              ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    DataTable(
+                      headingRowColor: MaterialStateProperty.all(
+                        Color(0xFFF8FAFC),
+                      ),
+                      columnSpacing: 40,
+                      columns: const [
+                        DataColumn(label: Text("NO")),
+                        DataColumn(label: Text("KATEGORI")),
+                        DataColumn(label: Text("CATATAN")),
+                        DataColumn(label: Text("STATUS")),
+                        DataColumn(label: Text("DILAPORKAN")),
+                        DataColumn(label: Text("UPDATE TERAKHIR")),
+                        DataColumn(label: Text("AKSI")),
+                      ],
+                      rows: const [],
+                    ),
+
+                    // Placeholder sejajar + mengikuti scroll
+                    Container(
+                      width: 900, // ≤ Sesuaikan dengan total lebar tabel
+                      padding: const EdgeInsets.symmetric(vertical: 40),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.check_circle_outline,
+                            size: 70,
+                            color: Color(0xFF94A3B8),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            "Tidak ada catatan",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF1E293B),
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            "Belum ada catatan sikap yang ditambahkan",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Color(0xFF64748B),
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),

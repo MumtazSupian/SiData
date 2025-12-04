@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sidata_app/login_page.dart';
-// import 'package:sidata_app/panduan_page.dart';
-// import 'package:sidata_app/permintaan_saksi_page.dart';
+import 'package:sidata_app/profile.dart';
+import 'student_behavior.dart';
+import 'explore.dart';
 
 
 void main() {
