@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sidata_app/pembiasaan_detail_page.dart';
+import 'package:sidata_app/widgets/appbar.dart';
 
 class JobEntry {
   final String pekerjaan;
@@ -26,6 +28,7 @@ class MateriEntry {
 
 class PembiasaanPage extends StatefulWidget {
   const PembiasaanPage({Key? key}) : super(key: key);
+  
 
   @override
   State<PembiasaanPage> createState() => _PembiasaanPageState();
@@ -36,7 +39,7 @@ class _PembiasaanPageState extends State<PembiasaanPage> {
   static const int _daysInMonth = 28;
   
   final Map<int, int> _statusByDay = {
-     2: 2, 3: 3, 4: 3, 5: 3, 6: 3, 7: 3, 8: 3, 9: 3,
+    2: 2, 3: 3, 4: 3, 5: 3, 6: 3, 7: 3, 8: 3, 9: 3,
     10: 3, 11: 3, 12: 3, 13: 0, 14: 4, 15: 4, 16: 4,
     17: 4, 18: 4, 19: 4, 20: 4, 21: 4, 22:4, 23: 4, 24: 4, 25: 4,
     26: 4, 27: 4, 28: 4,
@@ -58,6 +61,13 @@ class _PembiasaanPageState extends State<PembiasaanPage> {
     '(1-5) poin dari pertanyaan atau laporan pengetahuan materi',
   ];
   final Map<String, List<int>> _categoryPoints = {};
+
+  List<List<bool>> checklist = [
+    [false, false],
+    [false, false],
+    [false, false],
+    [false, false],
+  ];
 
   @override
   void initState() {
@@ -214,73 +224,8 @@ class _PembiasaanPageState extends State<PembiasaanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: _buildAppBar(),
+      appBar: const AppbarProp(),
       body: _buildBody(),
-    );
-  }
-
-  PreferredSizeWidget _buildAppBar() {
-    return AppBar(
-      backgroundColor: Colors.white,
-      elevation: 0,
-      toolbarHeight: 64,
-      leading: const Padding(
-        padding: EdgeInsets.only(left: 12.0),
-        child: Icon(Icons.home, color: Colors.grey),
-      ),
-      title: const SizedBox.shrink(),
-      centerTitle: false,
-      actions: [
-        LayoutBuilder(
-          builder: (context, constraints) {
-            final maxTextWidth = (MediaQuery.of(context).size.width * 0.45).clamp(80.0, 320.0);
-            return Padding(
-              padding: const EdgeInsets.only(right: 12.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: maxTextWidth),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          'Fauzan Mumtaz Nisa',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.black87,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          'PPLG XII-5',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: const TextStyle(fontSize: 12, color: Colors.blueGrey),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Colors.grey.shade300,
-                    child: const Icon(Icons.person, color: Colors.white),
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
-      ],
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(1),
-        child: Divider(height: 1, color: Colors.grey.shade300),
-      ),
     );
   }
 
@@ -299,13 +244,388 @@ class _PembiasaanPageState extends State<PembiasaanPage> {
               const SizedBox(height: 14),
               _buildNavigationButton(),
               const SizedBox(height: 18),
+
               _buildPembiasaanHarian(constraints.maxWidth),
+
               const SizedBox(height: 18),
-              _buildPekerjaanSection(),
+              
+  ExpansionTile(
+  tilePadding: EdgeInsets.zero,
+  childrenPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+  title: const Text(
+    'B. Pekerjaan yang dilakukan',
+    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+  ),
+  children: [
+    // Card container
+    Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withAlpha(38),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+
+      // ISI CARD
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "Mobile Developer",
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w700,
+            )
+          ),
+          const SizedBox(height: 2),
+          Text(
+            "Flutter Development",
+            style: TextStyle(
+              fontSize: 13,
+              color: Colors.grey[600],
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          const Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Pekerjaan:  "),
+              Expanded(child: Text("slicing ui")),
+            ],
+          ),
+          const SizedBox(height: 8),
+
+          const Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Tanggal:  "),
+              Expanded(child: Text("8 Okt 2020")),
+            ],
+          ),
+          const SizedBox(height: 8),
+
+          
+
+          const SizedBox(height: 16),
+
+          const Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("saksi:  "),
+              Expanded(
+                child: Text(
+                  "nijet",
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 16),
+
+          // Status badge
+          Row(
+            children: [
+              const Text("Status:  "),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Colors.green.withAlpha(38),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Text(
+                  "Selesai",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.green,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+
+    // Tombol Tambah Pekerjaan
+    TextButton(
+      onPressed: _showAddJobDialog,
+      child: const Text(
+        "+ Tambah Pekerjaan",
+        style: TextStyle(color: Colors.blue),
+      ),
+    ),
+  ],
+),
+
+
+
               const SizedBox(height: 18),
-              _buildMateriSection(),
+
+              ExpansionTile(
+                tilePadding: EdgeInsets.zero,
+                childrenPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                title: const Text(
+                  'C. Materi Yang Dipelajari',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                ),
+                children: [
+                  // Card container
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.only(bottom: 12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withAlpha(38),
+                          blurRadius: 6,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+
+                    // ISI CARD
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Mobile Developer",
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          "Flutter Development",
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+
+                        const SizedBox(height: 16),
+
+                        const Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Guru:  "),
+                            Expanded(child: Text("Pak Istakim")),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+
+                        const Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Tanggal:  "),
+                            Expanded(child: Text("8 Okt 2020")),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+
+                        // Status badge
+                        Row(
+                          children: [
+                            const Text("Status:  "),
+                            Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: Colors.green.withAlpha(38),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Text(
+                                "Selesai",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        const SizedBox(height: 16),
+
+                        const Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Catatan Guru:  "),
+                            Expanded(
+                              child: Text(
+                                "Pekerjaan sudah sesuai dengan standar kompetensi yang diharapkan",
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        const SizedBox(height: 16),
+
+                        const Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Catatan Siswa:  "),
+                            Expanded(
+                              child: Text(
+                                "Terima kasih atas bimbingannya, saya akan terus belajar dan meningkatkan kemampuan",
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // Tombol Tambah Pekerjaan
+                  TextButton(
+                    onPressed: _showAddJobDialog,
+                    child: const Text(
+                      "+ Tambah Pekerjaan",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ),
+                ],
+              ),
+
               const SizedBox(height: 18),
-              _buildPoinSection(),
+
+             ExpansionTile(
+  tilePadding: EdgeInsets.zero,
+  childrenPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+  title: const Text(
+    'D. Poin',
+    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+  ),
+  children: [
+    // ============================
+    // CARD M1
+    // ============================
+    _buildModuleCard(
+      title: "M1",
+      questions: [
+        "Mengerjakan project/update progress",
+        "Poin dari pertanyaan atau laporan materi"
+      ],
+    ),
+
+    // ============================
+    // CARD M2
+    // ============================
+    _buildModuleCard(
+      title: "M2",
+      questions: [
+        "Mengerjakan project/update progress",
+        "Poin dari pertanyaan atau laporan materi"
+      ],
+    ),
+
+    // ============================
+    // CARD M3
+    // ============================
+    _buildModuleCard(
+      title: "M3",
+      questions: [
+        "Mengerjakan project/update progress",
+        "Poin dari pertanyaan atau laporan materi"
+      ],
+    ),
+
+    // ============================
+    // CARD M4
+    // ============================
+    _buildModuleCard(
+      title: "M4",
+      questions: [
+        "Mengerjakan project/update progress",
+        "Poin dari pertanyaan atau laporan materi"
+      ],
+    ),
+
+    // ===============================
+    // JUMLAH POIN MINGGU INI
+    // ===============================
+    Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text("Jumlah poin minggu ini",
+              style: TextStyle(fontWeight: FontWeight.bold)),
+          DropdownButton<int>(
+            value: 0,
+            items: List.generate(
+              51,
+              (i) => DropdownMenuItem(value: i, child: Text(i.toString())),
+            ),
+            onChanged: (value) {},
+          ),
+        ],
+      ),
+    ),
+
+    // ===============================
+    // JUMLAH CEKLIST PEMBIASAAN
+    // ===============================
+    Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text("Jumlah ceklis pembiasaan",
+              style: TextStyle(fontWeight: FontWeight.bold)),
+          DropdownButton<int>(
+            value: 0,
+            items: List.generate(
+              51,
+              (i) => DropdownMenuItem(value: i, child: Text(i.toString())),
+            ),
+            onChanged: (value) {},
+          ),
+        ],
+      ),
+    ),
+
+    // ===============================
+    // TOTAL KESELURUHAN
+    // ===============================
+    Padding(
+      padding: const EdgeInsets.fromLTRB(12, 0, 12, 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: const [
+          Text(
+            "Total Poin",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            "0",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    ),
+  ],
+),
+
+
+
+
               const SizedBox(height: 30),
             ],
           ),
@@ -402,7 +722,22 @@ class _PembiasaanPageState extends State<PembiasaanPage> {
         if (day > _daysInMonth) return const SizedBox.shrink();
 
         final status = _statusByDay[day] ?? 0;
-        return DayTile(day: day, status: status);
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => PembiasaanBiasaPage(
+                  tanggal: day,
+                  status: status,
+                  
+                ),
+              ),
+            );
+          },
+          child: DayTile(day: day, status: status),
+        );
+
       },
     );
   }
@@ -413,35 +748,35 @@ class _PembiasaanPageState extends State<PembiasaanPage> {
     return 7;
   }
 
-  Widget _buildPekerjaanSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'B. Pekerjaan yang dilakukan',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-        ),
-        const SizedBox(height: 8),
-        DataTableWidget(
-          headers: const ['Pekerjaan', 'Tgl', 'Saksi'],
-          columnWidths: const [6, 80, 100],
-          isEmpty: _jobs.isEmpty,
-          emptyMessage: 'Belum ada pekerjaan yang diinput.',
-          addButtonText: '+ Tambah Pekerjaan',
-          onAdd: _showAddJobDialog,
-          children: _jobs.map((job) {
-            return DataRow(
-              cells: [
-                job.pekerjaan,
-                '${job.tanggal.day}/${job.tanggal.month}/${job.tanggal.year}',
-                job.saksi,
-              ],
-            );
-          }).toList(),
-        ),
-      ],
-    );
-  }
+  // Widget _buildPekerjaanSection() {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       const Text(
+  //         'B. Pekerjaan yang dilakukan',
+  //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+  //       ),
+  //       const SizedBox(height: 8),
+  //       DataTableWidget(
+  //         headers: const ['Pekerjaan', 'Tgl', 'Saksi'],
+  //         columnWidths: const [6, 80, 100],
+  //         isEmpty: _jobs.isEmpty,
+  //         emptyMessage: 'Belum ada pekerjaan yang diinput.',
+  //         addButtonText: '+ Tambah Pekerjaan',
+  //         onAdd: _showAddJobDialog,
+  //         children: _jobs.map((job) {
+  //           return DataRow(
+  //             cells: [
+  //               job.pekerjaan,
+  //               '${job.tanggal.day}/${job.tanggal.month}/${job.tanggal.year}',
+  //               job.saksi,
+  //             ],
+  //           );
+  //         }).toList(),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Widget _buildMateriSection() {
     return Column(
@@ -517,6 +852,51 @@ class _PembiasaanPageState extends State<PembiasaanPage> {
       ],
     );
   }
+
+  Widget _buildModuleCard({
+    required String title,
+    required List<String> questions,
+  }) {
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 2,
+      child: ExpansionTile(
+        title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            child: Column(
+              children: [
+                ...questions.map(
+                  (q) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(child: Text(q)),
+                        DropdownButton<int>(
+                          value: 0,
+                          items: List.generate(
+                            6,
+                            (i) => DropdownMenuItem(
+                              value: i,
+                              child: Text(i.toString()),
+                            ),
+                          ),
+                          onChanged: (value) {},
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class LegendDot extends StatelessWidget {
@@ -529,15 +909,20 @@ class LegendDot extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          width: 12,
-          height: 12,
-          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      GestureDetector(
+        
+          child: Container(
+            width: 12,
+            height: 12,
+            decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+          ),
         ),
         const SizedBox(width: 8),
         Text(label, style: const TextStyle(color: Colors.black54)),
@@ -922,6 +1307,25 @@ class DataTableWidget extends StatelessWidget {
     );
   }
 
+  Widget _buildCell(Widget cell, num? width, BoxConstraints constraints) {
+    if (width == null) {
+      return Expanded(child: cell);
+    }
+
+    if (width <= 10) {
+      return Expanded(flex: width.toInt(), child: cell);
+    }
+
+    final fixedWidth = width.toDouble();
+    final maxAllowed = constraints.maxWidth * 0.45;
+    final appliedWidth = fixedWidth > maxAllowed ? maxAllowed : fixedWidth;
+
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: appliedWidth),
+      child: SizedBox(width: appliedWidth, child: cell),
+    );
+  }
+
   Widget _buildHeader() {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -951,22 +1355,7 @@ class DataTableWidget extends StatelessWidget {
                 ),
               );
 
-              if (width == null) {
-                return Expanded(child: cell);
-              }
-
-              if (width is num && width <= 10) {
-                return Expanded(flex: width.toInt(), child: cell);
-              }
-
-              final fixedWidth = (width as num).toDouble();
-              final maxAllowed = constraints.maxWidth * 0.45;
-              final appliedWidth = fixedWidth > maxAllowed ? maxAllowed : fixedWidth;
-
-              return ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: appliedWidth),
-                child: SizedBox(width: appliedWidth, child: cell),
-              );
+              return _buildCell(cell, width, constraints);
             }),
           ),
         );
@@ -1002,11 +1391,11 @@ class DataTableWidget extends StatelessWidget {
                     return Expanded(child: cell);
                   }
 
-                  if (width is num && width <= 10) {
+                  if (width <= 10) {
                     return Expanded(flex: width.toInt(), child: cell);
                   }
 
-                  final fixedWidth = (width as num).toDouble();
+                  final fixedWidth = width.toDouble();
                   final maxAllowed = constraints.maxWidth * 0.45;
                   final appliedWidth = fixedWidth > maxAllowed ? maxAllowed : fixedWidth;
 
@@ -1025,7 +1414,15 @@ class DataTableWidget extends StatelessWidget {
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               child: GestureDetector(
-                onTap: onAdd,
+               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PembiasaanBiasaPage(tanggal: 0, status: 0),
+                  ),
+                );
+              },
+
                 child: Text(
                   addButtonText,
                   style: TextStyle(
@@ -1078,11 +1475,11 @@ class DataTableWidget extends StatelessWidget {
                 return Expanded(child: cellContent);
               }
 
-              if (width is num && width <= 10) {
+              if (width <= 10) {
                 return Expanded(flex: width.toInt(), child: cellContent);
               }
 
-              final fixedWidth = (width as num).toDouble();
+              final fixedWidth = width.toDouble();
               final maxAllowed = constraints.maxWidth * 0.45;
               final appliedWidth = fixedWidth > maxAllowed ? maxAllowed : fixedWidth;
 

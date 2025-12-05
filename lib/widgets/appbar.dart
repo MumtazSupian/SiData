@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sidata_app/explore2.dart';
+
+import 'package:sidata_app/pembiasaan_page.dart';
 import 'package:sidata_app/progress_page.dart';
 import 'package:sidata_app/dashboard.dart';
 import 'package:sidata_app/login_page.dart';
@@ -108,7 +111,7 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     ),
               PopupMenuItem(
-                      value: 3, 
+                      value: 10, 
                       child: Row(
                         children: [
                           Icon(Icons.timer, size: 20),
@@ -148,7 +151,7 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
                       ),
               ),
               PopupMenuItem(
-                      value: 3, 
+                      value: 9, 
                       child: Row(
                         children: [
                           Icon(Icons.sticky_note_2, size: 20),
@@ -194,7 +197,7 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
               } else if (value == 2) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const Dashboard()));
               } else if (value == 3) {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const StudentBehavior()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const PembiasaanPage()));
               } else if (value == 4) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const PermintaanSaksiPage()));
               } else if (value == 5) {
@@ -205,6 +208,10 @@ class AppbarProp extends StatelessWidget implements PreferredSizeWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
               } else if(value == 6) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const ProgressPage()));
+              } else if(value == 9){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const StudentBehavior()));
+              } else if(value == 10){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Explore2()));
               }
             },
           ),
