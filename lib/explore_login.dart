@@ -2,14 +2,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Explore extends StatefulWidget {
-  const Explore({super.key});
+class ExploreLogin extends StatefulWidget {
+  const ExploreLogin({super.key});
 
   @override
-  State<Explore> createState() => _ExploreState();
+  State<ExploreLogin> createState() => _ExploreState();
 }
 
-class _ExploreState extends State<Explore> {
+class _ExploreState extends State<ExploreLogin> {
   static const blue = Color(0xFF0A3A75);
   final TextEditingController searchController = TextEditingController();
 
@@ -44,7 +44,7 @@ class _ExploreState extends State<Explore> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: const Text("Login", style: TextStyle(color: Colors.white)),
+              child: const Text("Dashboard", style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
