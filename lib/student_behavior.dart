@@ -1,365 +1,126 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sidata_app/widgets/appbar.dart';
+import 'package:sidata_app/widgets/student_behavior_card.dart';
+import 'package:sidata_app/widgets/datatables.dart';
 
-class StudentBehavior extends StatelessWidget {
+class StudentBehavior extends StatefulWidget {
   const StudentBehavior({super.key});
 
   @override
+  State<StudentBehavior> createState() => _StudentBehaviorState();
+}
+
+class _StudentBehaviorState extends State<StudentBehavior> {
+  final List<Map<String, dynamic>> recordData = [
+    {
+      "kategori": "Kedisiplinan",
+      "catatan": "Sering terlambat 10 menit, setelah bel masuk",
+      "status": "Diproses",
+      "tanggal_1": "10 Jan 2025",
+      "tanggal_2": "12 Jan 2025",
+      "aksi": "Lihat",
+    },
+    {
+      "kategori": "Sikap",
+      "catatan": "Kurang mem-perhatian pada saat jam pelajaran",
+      "status": "Selesai",
+      "tanggal_1": "5 Jan 2025",
+      "tanggal_2": "7 Jan 2025",
+      "aksi": "Lihat",
+    },
+  ];
+
+  @override
   Widget build(BuildContext context) {
-    // === 3 DATA DUMMY SESUAI TABEL DI GAMBAR ===
-    final List<Map<String, dynamic>> behaviorData = [
-      {
-        "no": 1,
-        "kategori": "Kerapian",
-        "catatan": "Sering tidak memakai atribut lengkap",
-        "status": "Dalam Perbaikan",
-        "laporkan": "12 Jan 2025",
-        "update": "15 Jan 2025",
-      },
-      {
-        "no": 2,
-        "kategori": "Sikap",
-        "catatan": "Kurang fokus saat pembelajaran",
-        "status": "Belum Ditindak",
-        "laporkan": "10 Jan 2025",
-        "update": "10 Jan 2025",
-      },
-      {
-        "no": 3,
-        "kategori": "Disiplin",
-        "catatan": "Sering terlambat masuk kelas",
-        "status": "Sudah Berubah",
-        "laporkan": "05 Jan 2025",
-        "update": "20 Jan 2025",
-      },
-    ];
-
     return Scaffold(
-      appBar: const AppbarProp(),
-      backgroundColor: const Color(0xFFF4F6F9),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-        child: ListView(
-          children: [
-            Text(
-              "Catatan Sikap Siswa",
-              style: TextStyle(
-                fontSize: 31,
-                fontWeight: FontWeight.w600,
-                color: Color(0xFF1E293B),
+      backgroundColor: Colors.white,
+      appBar: AppbarProp(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(23),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Catatan Sikap Saya",
+                style: GoogleFonts.inter(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-
-            SizedBox(height: 10),
-
-            Text(
-              "Lihat catatan sikap dan perilaku yang telah\ndilaporkan",
-              style: TextStyle(
-                fontSize: 18,
-                color: Color(0xFF475569),
-                height: 1.4,
+              Text(
+                "Lihat Catatan Sikap dan Perilaku yang Telah Dilaporkan",
+                style: GoogleFonts.inter(fontSize: 16),
               ),
-            ),
-
-            SizedBox(height: 20),
-
-            // === CARD PERHATIAN ===
-            Card(
-              elevation: 0,
-              color: Color(0xFFFFFBEB),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                side: BorderSide(color: Color(0xFFFCD34D), width: 2),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(18),
-                child: Column(
+              SizedBox(height: 30),
+              Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.yellow[50],
+                  border: Border.all(color: Colors.yellow.shade700, width: 1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.warning_amber_rounded,
-                          color: Color(0xFFDC2626),
-                          size: 28,
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          "Perhatian",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF1E293B),
-                          ),
-                        ),
-                      ],
+                    Icon(
+                      Icons.warning_amber_outlined,
+                      size: 16,
+                      color: Colors.yellow.shade700,
                     ),
-                    SizedBox(height: 10),
-                    Text(
-                      "Jika Anda merasa ada catatan yang tidak\n"
-                      "sesuai atau keliru, silahkan hubungi guru\n"
-                      "jurusan untuk mengajukan klarifikasi.",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF475569),
-                        height: 1.4,
+                    SizedBox(width: 8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Perhatian",
+                            style: GoogleFonts.inter(
+                              color: Colors.brown[700],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            "Jika Anda merasa ada catatan yang tidak sesuai atau keliru, silakan hubungi guru jurusan untuk mengajukan\nklarifikasi.",
+                            style: GoogleFonts.inter(color: Colors.brown[800]),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-
-            SizedBox(height: 20),
-
-            // === STATISTIC CARDS ===
-            _buildStatCard(
-              "Total Catatan",
-              "0",
-              Color(0xFFE8F0FF),
-              Icons.description,
-              Color(0xFF3B82F6),
-            ),
-            SizedBox(height: 20),
-
-            _buildStatCard(
-              "Dalam Perbaikan",
-              "0",
-              Color(0xFFFEF9C3),
-              Icons.bolt_sharp,
-              Color(0xFFCA8A04),
-            ),
-            SizedBox(height: 20),
-
-            _buildStatCard(
-              "Sudah Berubah",
-              "0",
-              Color(0xFFDCFCE7),
-              Icons.check_circle_outline,
-              Color(0xFF16A34A),
-            ),
-            SizedBox(height: 25),
-
-            // ===============================================================
-            // ======================= TABLE SECTION =========================
-            // ===============================================================
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Color(0xFFE0E0E0)),
+              SizedBox(height: 25),
+              CompetencyStatisticCard(
+                title: "Total Catatan",
+                value: 0,
+                color: "0xFF3b82f6",
+                valueColor: "0xFF000000",
+                icon: Icons.my_library_books_outlined,
               ),
-              child: Column(
-                children: [
-                  // HEADER
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 15,
-                      horizontal: 20,
-                    ),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFF8FAFC),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                      ),
-                    ),
-                    child: Row(
-                      children: const [
-                        SizedBox(
-                          width: 40,
-                          child: Text(
-                            "NO",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            "KATEGORI",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            "CATATAN",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            "STATUS",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            "DILAPORKAN",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            "UPDATE TERAKHIR",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 70,
-                          child: Text(
-                            "AKSI",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // DATA ROWS
-                  ...behaviorData.map((item) {
-                    return ExpansionTile(
-                      tilePadding: const EdgeInsets.symmetric(horizontal: 20),
-                      childrenPadding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 12,
-                      ),
-
-                      title: Row(
-                        children: [
-                          SizedBox(width: 40, child: Text("${item['no']}")),
-                          Expanded(
-                            child: Text(
-                              item['kategori'],
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              item['catatan'],
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              item['status'],
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          Expanded(child: Text(item['laporkan'])),
-                          Expanded(child: Text(item['update'])),
-                          const SizedBox(
-                            width: 70,
-                            child: Icon(Icons.more_horiz),
-                          ),
-                        ],
-                      ),
-
-                      // EXPANDED CONTENT
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            color: Color(0xFFF1F5F9),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Detail Catatan",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF1E293B),
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              Text(
-                                item['catatan'],
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Color(0xFF475569),
-                                ),
-                              ),
-                              SizedBox(height: 15),
-                              ElevatedButton.icon(
-                                onPressed: () {},
-                                icon: Icon(Icons.edit, size: 18),
-                                label: Text("Edit Catatan"),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xFF3B82F6),
-                                  foregroundColor: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    );
-                  }),
-
-                  SizedBox(height: 10),
-                ],
+              SizedBox(height: 25),
+              CompetencyStatisticCard(
+                title: "Dalam Perbaikan",
+                value: 0,
+                color: "0xFFa855f7",
+                valueColor: "0xFF000000",
+                icon: Icons.bolt_sharp,
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  // ===============================================================
-  // Reusable statistic card
-  Widget _buildStatCard(
-    String title,
-    String value,
-    Color bg,
-    IconData icon,
-    Color iconColor,
-  ) {
-    return Card(
-      color: Colors.white,
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: const BorderSide(color: Color(0xFFE0E0E0), width: 1),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(18),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color(0xFF1E293B),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    value,
-                    style: TextStyle(
-                      fontSize: 32,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
+              SizedBox(height: 25),
+              CompetencyStatisticCard(
+                title: "Sudah Berubah",
+                value: 0,
+                color: "0xFF22c55e",
+                valueColor: "0xFF000000",
+                icon: Icons.check_circle_outline,
               ),
-            ),
-            Container(
-              width: 56,
-              height: 56,
-              decoration: BoxDecoration(color: bg, shape: BoxShape.circle),
-              child: Icon(icon, color: iconColor, size: 28),
-            ),
-          ],
+              SizedBox(height: 25),
+              RecordList(items: recordData),
+            ],
+          ),
         ),
       ),
     );
